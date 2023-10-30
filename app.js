@@ -3,10 +3,10 @@ const cors = require('cors');
 
 const app = express();
 
-const keyboardRoutes = require('./routes/keyboardRoutes');
+const qldhRoutes = require('./routes/QuanLyDatHangRoutes');
 
 app.use(cors());
 app.use(express.json());
-app.use('/api/keyboards', keyboardRoutes);
+app.use('/api', qldhRoutes);
 
 module.exports = app;

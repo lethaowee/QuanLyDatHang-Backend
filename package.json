@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^14.3.0",
+    "dotenv": "^14.3.2",
     "express": "^4.17.2",
     "mongoose": "^6.1.8",
     "mysql": "^2.18.1"
@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node server.js"
   },
-  "name": "kiboshop-backend",
+  "name": "quanlydathang-backend",
   "description": "",
   "version": "1.0.0",
   "main": "server.js",
@@ -25,5 +25,5 @@
   "bugs": {
     "url": "https://github.com/huynhhuuloc129/kiboShop-Backend/issues"
   },
-  "homepage": "https://github.com/huynhhuuloc129/kiboShop-Backend#readme"
+  "homepage": "https://github.com/huynhhuuloc129/e-Backend#readme"
 }
