@@ -41,6 +41,26 @@ exports.getOneDatHang = async (req, res) => {
     });
   }
 };
+exports.updateDatHang = async (req, res) => {
+  try {
+    var sql = `UPDATE dathang SET NgayGH ='${req.body.NgayGH}', TrangThaiDH = '${req.body.TrangThaiDH}' WHERE SoDonDH = ${req.params.id}`;
+    con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log("1 record inserted");
+      res.status(200).json({
+        status: 'success',
+        data: {
+          nhanvien: result,
+        },
+      });
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+}
 exports.createDatHang = async (req, res) => {
   try {
     var sql = `INSERT INTO dathang (SoDonDH, MSKH, MSNV, NgayDH, NgayGH, TrangThaiDH) VALUES ('${req.body.SoDonDH}', '${req.body.MSKH}', '${req.body.MSNV}', '${req.body.NgayDH}', '${req.body.NgayGH}', '${req.body.TrangThaiDH}')`;
@@ -63,7 +83,7 @@ exports.createDatHang = async (req, res) => {
 };
 exports.deleteDatHang = async (req, res) => {
   try {
-    var sql = `DELETE FROM khachhang WHERE SoDonDH = ${req.params.id}`;
+    var sql = `DELETE FROM dathang WHERE SoDonDH = ${req.params.id}`;
     con.query(sql, function (err, result) {
       if (err) throw err;
       console.log("1 record deleted");

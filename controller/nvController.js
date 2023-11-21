@@ -40,6 +40,26 @@ exports.getOneNhanVien = async (req, res) => {
     });
   }
 };
+exports.updateNhanVien = async (req, res) => {
+  try {
+    var sql = `UPDATE nhanvien SET HoTenNV ='${req.body.HoTenNV}', Password = '${req.body.Password}', ChucVu = '${req.body.ChucVu}', DiaChi = '${req.body.DiaChi}', SoDienThoai = '${req.body.SoDienThoai}' WHERE MSNV = ${req.params.id}`;
+    con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log("1 record inserted");
+      res.status(200).json({
+        status: 'success',
+        data: {
+          nhanvien: result,
+        },
+      });
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+}
 exports.createNhanVien = async (req, res) => {
   try {
     var sql = `INSERT INTO nhanvien (MSNV, HoTenNV, Password, ChucVu, DiaChi, SoDienThoai) VALUES ('${req.body.MSNV}', '${req.body.HoTenNV}', '${req.body.Password}', '${req.body.ChucVu}', '${req.body.DiaChi}', '${req.body.SoDienThoai}')`;

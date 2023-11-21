@@ -42,6 +42,26 @@ exports.getOneKhachHang = async (req, res) => {
     });
   }
 };
+exports.updateKhachHang = async (req, res) => {
+  try {
+    var sql = `UPDATE khachhang SET HoTenKH ='${req.body.HoTenKH}', Password = '${req.body.Password}', DiaChi = '${req.body.DiaChi}', SoDienThoai = '${req.body.SoDienThoai}' WHERE MSKH = ${req.params.id}`;
+    con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log("1 record inserted");
+      res.status(200).json({
+        status: 'success',
+        data: {
+          nhanvien: result,
+        },
+      });
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+}
 exports.createKhachHang = async (req, res) => {
   try {
     var sql = `INSERT INTO khachhang (MSKH, HoTenKH, Password, DiaChi, SoDienThoai) VALUES ('${req.body.MSKH}', '${req.body.HoTenKH}', '${req.body.Password}', '${req.body.DiaChi}', '${req.body.SoDienThoai}')`;
